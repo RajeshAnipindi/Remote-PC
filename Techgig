@@ -1,0 +1,38 @@
+''' Read input from STDIN. Print your output to STDOUT '''
+    #Use input() to read input from STDIN and use print to write your output to STDOUT
+
+def main():
+    L,N=map(int,input().split())
+    land=[1]*L
+    land_end=L-1
+    for _ in range(N):
+        start,end=map(int,input().split())
+        amount=0
+        for i in range(start,end+1):
+            land[i]=0
+            amount+=i
+        previous=start-1
+        nextval=end+1
+        if start!=0:
+            while previous!=-1:
+                if land[previous]==1:
+                    land[previous]=0
+                    amount+=previous
+                    break
+                else:
+                    previous-=1
+        if end!=land_end:
+            while nextval!=land_end+1:
+                if land[nextval]==1:
+                    land[nextval]=0
+                    amount+=nextval
+                    break
+                else:
+                    nextval+=1
+        print(amount)
+
+
+ 
+
+main()
+
